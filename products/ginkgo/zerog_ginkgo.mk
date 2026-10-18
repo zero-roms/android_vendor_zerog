@@ -9,6 +9,10 @@
 
 ZEROG_BUILD := ginkgo
 
+# LineageOS's version string expects the device codename in LINEAGE_BUILD,
+# which its `breakfast` helper exports. We use plain `lunch`, so set it here.
+LINEAGE_BUILD := $(ZEROG_BUILD)
+
 # Device layer, as LineageOS defines it
 $(call inherit-product, device/xiaomi/ginkgo/lineage_ginkgo.mk)
 
