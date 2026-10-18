@@ -16,9 +16,10 @@ PRODUCT_SYSTEM_PROPERTIES += \
     ro.zerog.build.date=$(ZEROG_BUILD_DATE) \
     ro.zerog.build.type=$(ZEROG_BUILDTYPE) \
     ro.zerog.device=$(ZEROG_BUILD) \
-    ro.zerog.display.version=ZeroG\ $(ZEROG_SEMVER)
+    ro.zerog.display.version=ZeroG-$(ZEROG_SEMVER)
 
 # Reuse LineageOS's display slot so the About screen shows ZeroG without a
 # framework change. Replaced by ZeroG's own About entries in Phase 4.
+# No spaces in property values: the build system splits on them.
 PRODUCT_SYSTEM_PROPERTIES += \
-    ro.lineage.display.version=ZeroG\ $(ZEROG_VERSION)
+    ro.lineage.display.version=ZeroG-$(ZEROG_VERSION)
