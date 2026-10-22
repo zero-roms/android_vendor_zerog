@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    SPDX-License-Identifier: Apache-2.0
+
+    ginkgo's display corners have a 106 px radius (framework overlay
+    rounded_corner_radius_top), but the device tree pads status bar content by
+    only 10dp (about 27 px at this density). The clock, the battery's charging
+    bolt and the camera/mic privacy dot end up inside the curve.
+    SystemUI uses this value as the minimum left and right inset of the
+    status bar content area (StatusBarContentInsetsProvider).
+-->
+<resources>
+    <dimen name="rounded_corner_content_padding">24dp</dimen>
+</resources>

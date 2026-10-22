@@ -18,8 +18,12 @@ PRODUCT_SYSTEM_PROPERTIES += \
     ro.zerog.device=$(ZEROG_BUILD) \
     ro.zerog.display.version=ZeroG-$(ZEROG_SEMVER)
 
-# Reuse LineageOS's display slot so the About screen shows ZeroG without a
-# framework change. Replaced by ZeroG's own About entries in Phase 4.
-# No spaces in property values: the build system splits on them.
-PRODUCT_SYSTEM_PROPERTIES += \
-    ro.lineage.display.version=ZeroG-$(ZEROG_VERSION)
+# LineageOS writes ro.lineage.display.version into the product partition's
+# build.prop, which loads after ours, and Android 17's build rejects a second
+# definition. The About screen therefore gets ZeroG through LineageOS's own
+# TARGET_UNOFFICIAL_BUILD_ID hook, set in each product makefile. A proper
+# "ZeroG version" entry needs a Settings patch (Phase 3 branding).
+
+# Apps removed from the LineageOS set (see ROM_PLAN.md cut list).
+PRODUCT_PACKAGES += \
+    ZeroGRemovedPackages

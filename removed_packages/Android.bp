@@ -1,0 +1,24 @@
+//
+// ZeroG cut list: modules named here are left out of the image.
+//
+// SPDX-License-Identifier: Apache-2.0
+//
+// A module that "overrides" another stops the other from being installed,
+// without editing the LineageOS or device makefiles that add it. This module
+// installs nothing itself.
+//
+// Jelly, Glimpse and Canvas are also on the cut list but stay until their
+// replacements (Cromite, Fossify Gallery) are bundled, so the phone never
+// ships without a browser or a gallery.
+//
+
+prebuilt_etc {
+    name: "ZeroGRemovedPackages",
+    src: "empty",
+    filename: "zerog_removed_packages",
+    installable: false,
+    overrides: [
+        "AudioFX", // equaliser service; Twelve has its own equaliser
+        "FM2",     // FM radio app; FM cut on 22 October 2026
+    ],
+}
