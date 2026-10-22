@@ -7,9 +7,9 @@
 // without editing the LineageOS or device makefiles that add it. This module
 // installs nothing itself.
 //
-// Jelly, Glimpse and Canvas are also on the cut list but stay until their
-// replacements (Cromite, Fossify Gallery) are bundled, so the phone never
-// ships without a browser or a gallery.
+// Glimpse and Canvas are removed by the FossifyGallery module that replaces
+// them (prebuilt/apps), so the removal and the replacement cannot be split.
+// Jelly stays until Cromite is bundled, so the phone always has a browser.
 //
 
 prebuilt_etc {
@@ -20,5 +20,9 @@ prebuilt_etc {
     overrides: [
         "AudioFX", // equaliser service; Twelve has its own equaliser
         "FM2",     // FM radio app; FM cut on 22 October 2026
+        // FM2's library pieces, which its own module would otherwise install
+        "libqcomfm_jni",
+        "qcom.fmradio",
+        "qcom.fmradio.xml",
     ],
 }

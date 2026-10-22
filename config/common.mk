@@ -24,6 +24,14 @@ PRODUCT_SYSTEM_PROPERTIES += \
 # TARGET_UNOFFICIAL_BUILD_ID hook, set in each product makefile. A proper
 # "ZeroG version" entry needs a Settings patch (Phase 3 branding).
 
+# Resource overlays shared by every ZeroG device
+PRODUCT_PACKAGE_OVERLAYS += vendor/zerog/overlay
+
 # Apps removed from the LineageOS set (see ROM_PLAN.md cut list).
 PRODUCT_PACKAGES += \
     ZeroGRemovedPackages
+
+# Third-party apps, built from source (prebuilt/apps/build-fossify.sh)
+PRODUCT_PACKAGES += \
+    FossifyFileManager \
+    FossifyGallery

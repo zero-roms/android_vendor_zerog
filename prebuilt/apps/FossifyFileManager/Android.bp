@@ -1,0 +1,16 @@
+//
+// Fossify File Manager (GPL-3.0), foss flavour, built from source by prebuilt/apps/build-fossify.sh
+// and re-signed here with the ROM's default app key (not the platform key).
+//
+// SPDX-License-Identifier: Apache-2.0
+//
+
+android_app_import {
+    name: "FossifyFileManager",
+    apk: "FossifyFileManager.apk",
+    default_dev_cert: true,
+    product_specific: true,
+    dex_preopt: {
+        enabled: true,
+    },
+}
