@@ -14,4 +14,10 @@ android_app_import {
     dex_preopt: {
         enabled: true,
     },
+    // Declared in the APK's manifest as not required (AndroidX window
+    // libraries); the build's uses-library check needs the same list here.
+    optional_uses_libs: [
+        "androidx.window.extensions",
+        "androidx.window.sidecar",
+    ],
 }
