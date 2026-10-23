@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    SPDX-License-Identifier: Apache-2.0
+
+    ZeroG: the analog clock widget, redrawn as a vector in the same design as
+    DeskClock's white PNGs (720 px grid at xxhdpi) but in the colour the digital
+    clock widget uses (colorPrimaryContainer of Material 3 dynamic colours), so
+    it follows the wallpaper colours. drawable-anydpi takes precedence over the
+    PNGs in drawable-*dpi. Bug B4.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="240dp"
+    android:height="240dp"
+    android:viewportWidth="720"
+    android:viewportHeight="720">
+    <!-- Ring: outer edge 352 from the centre, 15 thick. -->
+    <path
+        android:pathData="M360,15a345,345 0,1 1,0 690a345,345 0,1 1,0 -690z"
+        android:strokeWidth="15"
+        android:strokeColor="@android:color/system_primary_container_light" />
+</vector>
