@@ -1,5 +1,8 @@
 app:     Gboard (com.google.android.inputmethod.latin)
-source:  Google, single arm64-v8a APK (not a split bundle)
-version: TO PIN before the first 3A build
-sha256:  TO PIN
-cert:    TO PIN (SHA-256 of Google's Gboard signing certificate, checked with apksigner)
+source:  Google LLC; file taken from APKMirror (arm64-v8a, nodpi, Android 8.0+ variant), 23 October 2026
+version: 18.4.4.985164140-release-arm64-v8a (versionCode 176027246), targetSdk 37, single APK
+size:    79646012
+sha256:  2a3f05f2f07bde6253fae35e95fe568409395a7b3eb6ad93b22573e8150aa9ee
+cert:    7ce83c1b71f3d572fed04c8d40c5cb10ff75e6d87d9df6fbd53f0468c2905053
+lineage: v3.1 key rotation from Google's original Gboard key f0fd6c5b410f25cb25c3b53346c8972fae30f8ee7411df910480ad6b2d60db83 (SHA-1 38918a45...); Play Store updates carry the same lineage
+checked: SHA-256 equals APKMirror's published hash; apksigner verify passes (v2, v3, v3.1)
