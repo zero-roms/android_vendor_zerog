@@ -1,0 +1,8 @@
+app:     NotallyX
+source:  https://github.com/Crustack/NotallyX
+tag:     v7.11.3
+commit:  f8c9cea0fdc35be7f495bb323ddab50632bdc373
+build:   release, signed with a throwaway key (re-signed by the ROM build)
+sha256:  e75c1292da014947c941dfffe969d5f1cb5936516184f59400bb6e67a9825a65
+upstream contents check: MATCH except libzstd-jni-1.5.7-6.so (all four ABIs): same size, all loadable segments (code and data) identical; only the section-name table (.shstrtab) order and the name offsets in the section headers differ, a side effect of the debug-symbol strip tool. Checked 23 October 2026.
+built:   2026-10-23T17:51Z with openjdk version "21.0.11" 2026-04-21

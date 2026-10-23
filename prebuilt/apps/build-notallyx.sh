@@ -69,6 +69,10 @@ trap 'rm -rf "$tmp"' EXIT
     -PRELEASE_KEY_ALIAS=throwaway -PRELEASE_KEY_PASSWORD=throwaway)
 
 apk=$(ls "$repo"/app/build/outputs/apk/release/*.apk | head -n1)
+# The release build rewrites two tracked files (app.lastVersionName in
+# gradle.properties, and the R8 mapping); restore them so the clean-tree check
+# passes next time.
+git -C "$repo" checkout -- gradle.properties app/obfuscation
 mkdir -p "$HERE/$NAME"
 cp "$apk" "$HERE/$NAME/$NAME.apk"
 sum=$(shasum -a 256 "$HERE/$NAME/$NAME.apk" | awk '{print $1}')
