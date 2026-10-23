@@ -1,0 +1,29 @@
+//
+// Cromite (GPL-3.0), the browser: arm64_ChromePublic.apk as published by the
+// Cromite project, kept with its own signature so Cromite's own updates can
+// install over it. The APK (over 300 MB, above GitHub's file limit) is not in
+// git: prebuilt/apps/fetch-prebuilts.sh downloads it and checks the SHA-256
+// pinned in SOURCE. Apps keep LineageOS's WebView; Cromite's SystemWebView is
+// not used (ROM_PLAN.md, Phase 3A).
+//
+// SPDX-License-Identifier: Apache-2.0
+//
+
+android_app_import {
+    name: "Cromite",
+    apk: "Cromite.apk",
+    presigned: true,
+    // Published release APK: already aligned, native libraries stored
+    // uncompressed. Checked again before the first build.
+    preprocessed: true,
+    dex_preopt: {
+        enabled: false,
+    },
+    product_specific: true,
+    // Replaces Jelly, so the phone always has exactly one browser.
+    overrides: [
+        "Jelly",
+        "initial-package-stopped-states-org.lineageos.jelly",
+        "preinstalled-packages-org.lineageos.jelly",
+    ],
+}

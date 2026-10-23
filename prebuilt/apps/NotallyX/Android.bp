@@ -1,0 +1,17 @@
+//
+// NotallyX (GPL-3.0), notes: a fork of Notally with checklists, note lock and
+// Google Keep import. Built from source by prebuilt/apps/build-notallyx.sh and
+// re-signed here with the ROM's default app key (not the platform key).
+//
+// SPDX-License-Identifier: Apache-2.0
+//
+
+android_app_import {
+    name: "NotallyX",
+    apk: "NotallyX.apk",
+    default_dev_cert: true,
+    product_specific: true,
+    dex_preopt: {
+        enabled: true,
+    },
+}

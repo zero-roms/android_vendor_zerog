@@ -31,7 +31,22 @@ PRODUCT_PACKAGE_OVERLAYS += vendor/zerog/overlay
 PRODUCT_PACKAGES += \
     ZeroGRemovedPackages
 
-# Third-party apps, built from source (prebuilt/apps/build-fossify.sh)
+# Third-party apps, built from source (prebuilt/apps/build-fossify.sh,
+# prebuilt/apps/build-notallyx.sh)
 PRODUCT_PACKAGES += \
     FossifyFileManager \
-    FossifyGallery
+    FossifyGallery \
+    NotallyX
+
+# Third-party apps kept with their publishers' signatures; the APKs are not in
+# git and are put in place by prebuilt/apps/fetch-prebuilts.sh. Cromite
+# replaces Jelly.
+PRODUCT_PACKAGES += \
+    Cromite
+
+# Google build (Phase 3A). Build with ZEROG_GAPPS=false for the vanilla
+# variant without any Google software (Phase 3D).
+ZEROG_GAPPS ?= true
+ifeq ($(ZEROG_GAPPS),true)
+$(call inherit-product, vendor/zerog/config/gapps.mk)
+endif

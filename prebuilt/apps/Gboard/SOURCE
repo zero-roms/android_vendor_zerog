@@ -1,0 +1,5 @@
+app:     Gboard (com.google.android.inputmethod.latin)
+source:  Google, single arm64-v8a APK (not a split bundle)
+version: TO PIN before the first 3A build
+sha256:  TO PIN
+cert:    TO PIN (SHA-256 of Google's Gboard signing certificate, checked with apksigner)

@@ -1,0 +1,25 @@
+//
+// Gboard, the Google build's keyboard. Google's own signed APK, kept with its
+// signature so Play Store updates install over it. MindTheGapps does not
+// include Gboard. The APK is Google's to distribute, not ZeroG's, so it is not
+// in git: it is copied to the build server and checked against the SHA-256
+// and signing certificate pinned in SOURCE (prebuilt/apps/fetch-prebuilts.sh).
+// Only in the Google build (config/gapps.mk).
+//
+// SPDX-License-Identifier: Apache-2.0
+//
+
+android_app_import {
+    name: "Gboard",
+    apk: "Gboard.apk",
+    presigned: true,
+    preprocessed: true,
+    dex_preopt: {
+        enabled: false,
+    },
+    product_specific: true,
+    // The Google build's only keyboard, as on Pixel phones. With two system
+    // keyboards Android picks the first-boot default by itself, so the AOSP
+    // keyboard is left out of the Google build; the vanilla build keeps it.
+    overrides: ["LatinIME"],
+}

@@ -1,0 +1,7 @@
+app:     Cromite (browser)
+source:  https://github.com/uazo/cromite
+tag:     v153.0.8010.37-11507ac1061b5ea227806f5e84db5a57df6ccf6a
+url:     https://github.com/uazo/cromite/releases/download/v153.0.8010.37-11507ac1061b5ea227806f5e84db5a57df6ccf6a/arm64_ChromePublic.apk
+size:    323809949
+sha256:  9db12af1af021f42b4371e76d0e9fe476a7085bbbbc76bc410a538d028bf6071
+pinned:  23 October 2026 (checksum published by GitHub for the release asset)
