@@ -1,13 +1,13 @@
 //
-// ZeroG's replacement for MindTheGapps' gapps.rc (Google build only, listed
-// in config/gapps.mk). See zerog_gapps.rc.
+// ZeroS's replacement for MindTheGapps' gapps.rc (Google build only, listed
+// in config/gapps.mk). See zeros_gapps.rc.
 //
 // SPDX-License-Identifier: Apache-2.0
 //
 
 prebuilt_etc {
-    name: "zerog_gapps.rc",
-    src: "zerog_gapps.rc",
+    name: "zeros_gapps.rc",
+    src: "zeros_gapps.rc",
     sub_dir: "init",
     product_specific: true,
 }

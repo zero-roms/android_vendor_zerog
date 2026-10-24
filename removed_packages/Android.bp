@@ -1,5 +1,5 @@
 //
-// ZeroG cut list: modules named here are left out of the image.
+// ZeroS cut list: modules named here are left out of the image.
 //
 // SPDX-License-Identifier: Apache-2.0
 //
@@ -13,9 +13,9 @@
 //
 
 prebuilt_etc {
-    name: "ZeroGRemovedPackages",
+    name: "ZeroSRemovedPackages",
     src: "empty",
-    filename: "zerog_removed_packages",
+    filename: "zeros_removed_packages",
     installable: false,
     overrides: [
         "AudioFX", // equaliser service; Twelve has its own equaliser

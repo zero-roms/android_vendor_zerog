@@ -1,26 +1,26 @@
 #!/bin/bash
 #
-# Sign a ZeroG build with the release keys and package it (from Phase 3A).
+# Sign a ZeroS build with the release keys and package it (from Phase 3A).
 #
 # Run on the build server from the top of the tree, in the shell where lunch
 # ran, after:
 #   m installclean && m target-files-package otatools
 #
-#   vendor/zerog/build/tools/sign-zerog.sh <key-dir>
+#   vendor/zeros/build/tools/sign-zeros.sh <key-dir>
 #
-# <key-dir> holds the keys made by ~/rom/tools/make-zerog-keys.sh on the Mac
+# <key-dir> holds the keys made by ~/rom/tools/make-zeros-keys.sh on the Mac
 # (HANDBOOK.md section 11). They are copied to /dev/shm for this step only and
 # deleted afterwards; this script reads them in place and never copies, prints
 # or keeps key material.
 #
 # Follows LineageOS's "Signing Builds" page for 24.0: every APK and APEX is
-# re-signed with ZeroG's keys and recovery gets ZeroG's OTA key. Presigned
+# re-signed with ZeroS's keys and recovery gets ZeroS's OTA key. Presigned
 # apps (the Google set, Gboard, Cromite) keep their publishers' signatures.
 # The APEX list comes from the key directory itself (one <name>.pem payload
 # key per APEX), so it cannot drift from the keys.
 #
-# Output in $OUT/zerog-signed/:
-#   ZeroG-<version>.zip and .sha256sum, recovery.img, boot.img, dtbo.img,
+# Output in $OUT/zeros-signed/:
+#   ZeroS-<version>.zip and .sha256sum, recovery.img, boot.img, dtbo.img,
 #   signed-target_files.zip (kept for incremental updates later)
 #
 # SPDX-License-Identifier: Apache-2.0
@@ -28,7 +28,7 @@
 
 set -euo pipefail
 
-KEYS=${1:?usage: sign-zerog.sh <key-dir>}
+KEYS=${1:?usage: sign-zeros.sh <key-dir>}
 : "${OUT:?run lunch first (OUT is not set)}"
 
 for f in releasekey platform shared media networkstack; do
@@ -40,7 +40,7 @@ done
 tf=$(ls -t "$OUT"/obj/PACKAGING/target_files_intermediates/*-target_files*.zip 2>/dev/null | head -n1)
 [ -n "$tf" ] || { echo "error: no target files; run m target-files-package otatools" >&2; exit 1; }
 
-work="$OUT/zerog-signed"
+work="$OUT/zeros-signed"
 rm -rf "$work"
 mkdir -p "$work"
 
@@ -67,9 +67,9 @@ done
 echo "==> Signing $(basename "$tf") (APEX keys: $n)"
 sign_target_files_apks -o -d "$KEYS" "${args[@]}" "$tf" "$work/signed-target_files.zip"
 
-version=$(unzip -p "$work/signed-target_files.zip" SYSTEM/build.prop | sed -n 's/^ro\.zerog\.version=//p')
-[ -n "$version" ] || { echo "error: ro.zerog.version not found in the signed target files" >&2; exit 1; }
-zip="$work/ZeroG-$version.zip"
+version=$(unzip -p "$work/signed-target_files.zip" SYSTEM/build.prop | sed -n 's/^ro\.zeros\.version=//p')
+[ -n "$version" ] || { echo "error: ro.zeros.version not found in the signed target files" >&2; exit 1; }
+zip="$work/ZeroS-$version.zip"
 
 echo "==> Packaging $(basename "$zip")"
 ota_from_target_files -k "$KEYS/releasekey" --block --backup=true \
@@ -83,15 +83,15 @@ rm -f "$work/signed-img.zip"
 (cd "$work" && sha256sum "$(basename "$zip")" > "$(basename "$zip").sha256sum" \
     && sha256sum recovery.img boot.img dtbo.img "$(basename "$zip")" > SHA256SUMS)
 
-# Checks: recovery trusts ZeroG's release key, and the platform key really
+# Checks: recovery trusts ZeroS's release key, and the platform key really
 # changed. Fingerprints only (public), never key material.
 fp() { openssl x509 -noout -fingerprint -sha256 -in "$1" | cut -d= -f2 | tr -d : | tr A-F a-f; }
 want_release=$(fp "$KEYS/releasekey.x509.pem")
 got_ota=$(unzip -p "$work/signed-target_files.zip" SYSTEM/etc/security/otacerts.zip > "$work/.otacerts.zip" \
     && unzip -p "$work/.otacerts.zip" | openssl x509 -noout -fingerprint -sha256 | cut -d= -f2 | tr -d : | tr A-F a-f)
 rm -f "$work/.otacerts.zip"
-[ "$got_ota" = "$want_release" ] || { echo "error: OTA certificate is not ZeroG's release key" >&2; exit 1; }
-echo "ok: OTA updates must be signed with ZeroG's release key ($want_release)"
+[ "$got_ota" = "$want_release" ] || { echo "error: OTA certificate is not ZeroS's release key" >&2; exit 1; }
+echo "ok: OTA updates must be signed with ZeroS's release key ($want_release)"
 
 if command -v apksigner >/dev/null; then
     unzip -p "$work/signed-target_files.zip" SYSTEM/framework/framework-res.apk > "$work/.framework-res.apk"
@@ -99,8 +99,8 @@ if command -v apksigner >/dev/null; then
         | sed -n 's/.*certificate SHA-256 digest: //p' | head -n1)
     rm -f "$work/.framework-res.apk"
     [ "$got_platform" = "$(fp "$KEYS/platform.x509.pem")" ] \
-        || { echo "error: framework-res.apk is not signed with ZeroG's platform key" >&2; exit 1; }
-    echo "ok: system signed with ZeroG's platform key ($got_platform)"
+        || { echo "error: framework-res.apk is not signed with ZeroS's platform key" >&2; exit 1; }
+    echo "ok: system signed with ZeroS's platform key ($got_platform)"
 fi
 
 echo "==> Done: $work"

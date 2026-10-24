@@ -1,7 +1,7 @@
 //
 // Gboard, the Google build's keyboard. Google's own signed APK, kept with its
 // signature so Play Store updates install over it. MindTheGapps does not
-// include Gboard. The APK is Google's to distribute, not ZeroG's, so it is not
+// include Gboard. The APK is Google's to distribute, not ZeroS's, so it is not
 // in git: it is copied to the build server and checked against the SHA-256
 // and signing certificate pinned in SOURCE (prebuilt/apps/fetch-prebuilts.sh).
 // Only in the Google build (config/gapps.mk).

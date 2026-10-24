@@ -2,7 +2,7 @@
 <!--
     SPDX-License-Identifier: Apache-2.0
 
-    ZeroG: the analog clock widget, redrawn as a vector in the same design as
+    ZeroS: the analog clock widget, redrawn as a vector in the same design as
     DeskClock's white PNGs (720 px grid at xxhdpi) but in the colour the digital
     clock widget uses (colorPrimaryContainer of Material 3 dynamic colours), so
     it follows the wallpaper colours. drawable-anydpi takes precedence over the

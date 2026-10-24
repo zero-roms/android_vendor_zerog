@@ -2,7 +2,7 @@
 <!--
     SPDX-License-Identifier: Apache-2.0
 
-    ZeroG ships Fossify File Manager as the Files app. AOSP Files
+    ZeroS ships Fossify File Manager as the Files app. AOSP Files
     (DocumentsUI) stays installed because it is the system file picker that
     other apps open; only its launcher icon is hidden, the same switch
     Android Go devices use. Listed in DocumentsUI's overlayable resources.

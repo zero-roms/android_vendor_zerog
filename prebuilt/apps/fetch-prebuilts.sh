@@ -4,11 +4,11 @@
 # against the SHA-256 (and, where pinned, the signing certificate) in its
 # SOURCE file. Run before every build, from the top of the source tree:
 #
-#   vendor/zerog/prebuilt/apps/fetch-prebuilts.sh
+#   vendor/zeros/prebuilt/apps/fetch-prebuilts.sh
 #
 # Cromite is downloaded from its GitHub release when missing. Gboard is not
 # downloadable by script: copy Gboard.apk from the Mac to
-# vendor/zerog/prebuilt/apps/Gboard/ first (HANDBOOK.md). Both stay out of git
+# vendor/zeros/prebuilt/apps/Gboard/ first (HANDBOOK.md). Both stay out of git
 # (.gitignore). Every build needs both files, the vanilla build included,
 # because Soong reads every module in the tree.
 #
@@ -71,7 +71,7 @@ check Cromite Cromite.apk
 
 # Gboard: copied from the Mac
 if [ ! -f "$HERE/Gboard/Gboard.apk" ]; then
-    echo "error: vendor/zerog/prebuilt/apps/Gboard/Gboard.apk is missing;" \
+    echo "error: vendor/zeros/prebuilt/apps/Gboard/Gboard.apk is missing;" \
          "copy it from the Mac (HANDBOOK.md)" >&2
     exit 1
 fi

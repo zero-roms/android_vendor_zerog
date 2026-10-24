@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Build the Fossify apps ZeroG ships, from source, and place the unsigned
+# Build the Fossify apps ZeroS ships, from source, and place the unsigned
 # APKs where prebuilt/apps/*/Android.bp expects them. The ROM build re-signs
 # them with its default app key.
 #

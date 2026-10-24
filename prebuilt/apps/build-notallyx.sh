@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Build NotallyX, the notes app ZeroG ships, from source and place the APK
+# Build NotallyX, the notes app ZeroS ships, from source and place the APK
 # where prebuilt/apps/NotallyX/Android.bp expects it. The ROM build re-signs
 # it with its default app key.
 #

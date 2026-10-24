@@ -1,5 +1,5 @@
 #
-# ZeroG common configuration, inherited by every ZeroG product makefile.
+# ZeroS common configuration, inherited by every ZeroS product makefile.
 #
 # SPDX-License-Identifier: Apache-2.0
 #
@@ -7,29 +7,29 @@
 # arrive in later phases, each as its own file included from here.
 #
 
-include vendor/zerog/config/version.mk
+include vendor/zeros/config/version.mk
 
 # Identity visible to apps and in Settings > About phone
 PRODUCT_SYSTEM_PROPERTIES += \
-    ro.zerog.version=$(ZEROG_VERSION) \
-    ro.zerog.semver=$(ZEROG_SEMVER) \
-    ro.zerog.build.date=$(ZEROG_BUILD_DATE) \
-    ro.zerog.build.type=$(ZEROG_BUILDTYPE) \
-    ro.zerog.device=$(ZEROG_BUILD) \
-    ro.zerog.display.version=ZeroG-$(ZEROG_SEMVER)
+    ro.zeros.version=$(ZEROS_VERSION) \
+    ro.zeros.semver=$(ZEROS_SEMVER) \
+    ro.zeros.build.date=$(ZEROS_BUILD_DATE) \
+    ro.zeros.build.type=$(ZEROS_BUILDTYPE) \
+    ro.zeros.device=$(ZEROS_BUILD) \
+    ro.zeros.display.version=ZeroS-$(ZEROS_SEMVER)
 
 # LineageOS writes ro.lineage.display.version into the product partition's
 # build.prop, which loads after ours, and Android 17's build rejects a second
-# definition. The About screen therefore gets ZeroG through LineageOS's own
+# definition. The About screen therefore gets ZeroS through LineageOS's own
 # TARGET_UNOFFICIAL_BUILD_ID hook, set in each product makefile. A proper
-# "ZeroG version" entry needs a Settings patch (Phase 3 branding).
+# "ZeroS version" entry needs a Settings patch (Phase 3 branding).
 
-# Resource overlays shared by every ZeroG device
-PRODUCT_PACKAGE_OVERLAYS += vendor/zerog/overlay
+# Resource overlays shared by every ZeroS device
+PRODUCT_PACKAGE_OVERLAYS += vendor/zeros/overlay
 
 # Apps removed from the LineageOS set (see ROM_PLAN.md cut list).
 PRODUCT_PACKAGES += \
-    ZeroGRemovedPackages
+    ZeroSRemovedPackages
 
 # Third-party apps, built from source (prebuilt/apps/build-fossify.sh,
 # prebuilt/apps/build-notallyx.sh)
@@ -44,9 +44,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     Cromite
 
-# Google build (Phase 3A). Build with ZEROG_GAPPS=false for the vanilla
+# Google build (Phase 3A). Build with ZEROS_GAPPS=false for the vanilla
 # variant without any Google software (Phase 3D).
-ZEROG_GAPPS ?= true
-ifeq ($(ZEROG_GAPPS),true)
-$(call inherit-product, vendor/zerog/config/gapps.mk)
+ZEROS_GAPPS ?= true
+ifeq ($(ZEROS_GAPPS),true)
+$(call inherit-product, vendor/zeros/config/gapps.mk)
 endif
