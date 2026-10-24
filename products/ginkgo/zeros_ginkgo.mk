@@ -19,11 +19,14 @@ LINEAGE_BUILD := $(ZEROS_BUILD)
 include vendor/zeros/config/version.mk
 TARGET_UNOFFICIAL_BUILD_ID := ZeroS-$(ZEROS_SEMVER)
 
+# ZeroS common layer, inherited first so that it takes precedence over
+# LineageOS where both define the same thing: product overlay directories are
+# merged in inheritance order and the first listed wins (needed for the
+# default wallpaper, which LineageOS also overlays; 24 October 2026).
+$(call inherit-product, vendor/zeros/config/common.mk)
+
 # Device layer, as LineageOS defines it
 $(call inherit-product, device/xiaomi/ginkgo/lineage_ginkgo.mk)
-
-# ZeroS common layer
-$(call inherit-product, vendor/zeros/config/common.mk)
 
 # ginkgo-only resource fixes (status bar insets for the rounded corners).
 # Product overlays take precedence over the device tree's vendor overlays.

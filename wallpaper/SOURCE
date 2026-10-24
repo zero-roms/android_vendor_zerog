@@ -1,0 +1,12 @@
+what:   ZeroS default wallpaper "corner rings" (chosen 24 October 2026): two rings
+        in the lower right and a red dot (#e5322d) on the outer ring. Dark
+        version is the default; the light version is kept for a later wallpaper
+        picker entry.
+files:  zeros-corner-rings-dark.svg, zeros-corner-rings-light.svg (sources)
+render: magick -density 96 <name>.svg <name>.png  (1080x2340)
+used:   overlay/frameworks/base/core/res/res/drawable-*/default_wallpaper.png, the
+        dark PNG copied into all eight density folders LineageOS overlays, so
+        ZeroS's file wins on every screen type.
+theme:  the system theme stays wallpaper-derived (the dot is too small to seed it,
+        so Android uses its neutral fallback); the user chose this over a red
+        preset.
