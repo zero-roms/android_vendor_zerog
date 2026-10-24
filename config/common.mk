@@ -24,6 +24,13 @@ PRODUCT_SYSTEM_PROPERTIES += \
 # TARGET_UNOFFICIAL_BUILD_ID hook, set in each product makefile. A proper
 # "ZeroS version" entry needs a Settings patch (Phase 3 branding).
 
+# Boot animation: design B1 "orbit" in black, white and red (chosen 24 October
+# 2026). LineageOS's bootanimation.zip module copies this file instead of
+# generating its own (vendor/lineage/bootanimation, prebuilt_file hook); the
+# dark-theme variant is a link to the same file. Rebuild with
+# bootanimation/make-bootanimation.sh.
+TARGET_BOOTANIMATION := vendor/zeros/bootanimation/bootanimation.zip
+
 # Resource overlays shared by every ZeroS device
 PRODUCT_PACKAGE_OVERLAYS += vendor/zeros/overlay
 
