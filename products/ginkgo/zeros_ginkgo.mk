@@ -13,12 +13,6 @@ ZEROS_BUILD := ginkgo
 # which its `breakfast` helper exports. We use plain `lunch`, so set it here.
 LINEAGE_BUILD := $(ZEROS_BUILD)
 
-# ZeroS version, needed now: LineageOS's version.mk (read while inheriting the
-# device below) appends TARGET_UNOFFICIAL_BUILD_ID to its version string, which
-# is what Settings > About phone shows.
-include vendor/zeros/config/version.mk
-TARGET_UNOFFICIAL_BUILD_ID := ZeroS-$(ZEROS_SEMVER)
-
 # ZeroS common layer, inherited first so that it takes precedence over
 # LineageOS where both define the same thing: product overlay directories are
 # merged in inheritance order and the first listed wins (needed for the

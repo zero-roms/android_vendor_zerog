@@ -18,11 +18,10 @@ PRODUCT_SYSTEM_PROPERTIES += \
     ro.zeros.device=$(ZEROS_BUILD) \
     ro.zeros.display.version=ZeroS-$(ZEROS_SEMVER)
 
-# LineageOS writes ro.lineage.display.version into the product partition's
-# build.prop, which loads after ours, and Android 17's build rejects a second
-# definition. The About screen therefore gets ZeroS through LineageOS's own
-# TARGET_UNOFFICIAL_BUILD_ID hook, set in each product makefile. A proper
-# "ZeroS version" entry needs a Settings patch (Phase 3 branding).
+# Settings > About phone shows ro.zeros.version in its own "ZeroS version" row
+# (ZeroS fork of Settings, from 0.5.0), above LineageOS's version, which again
+# shows the plain LineageOS base. 0.2.0-0.4.0 put "ZeroS-<version>" into
+# LineageOS's version string instead (TARGET_UNOFFICIAL_BUILD_ID).
 
 # Boot animation: design B1 "orbit" in black, white and red (chosen 24 October
 # 2026). LineageOS's bootanimation.zip module copies this file instead of
