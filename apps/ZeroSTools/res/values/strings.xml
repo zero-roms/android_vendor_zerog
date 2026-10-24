@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <string name="app_name">ZeroS tools</string>
+    <!-- Quick settings tile that captures a bug report [CHAR LIMIT=20] -->
+    <string name="bug_report_tile_label">Bug report</string>
+    <!-- Shown after tapping the tile; Android's Shell app then shows progress and a share notification -->
+    <string name="bug_report_started">Capturing a bug report. A notification will let you share it in a minute or two.</string>
+</resources>

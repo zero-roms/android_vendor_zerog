@@ -1,0 +1,18 @@
+//
+// ZeroS tools: small system app for ZeroS's own quick settings tiles and
+// switches. First tile: Bug report (Phase 3B).
+//
+// SPDX-License-Identifier: Apache-2.0
+//
+
+android_app {
+    name: "ZeroSTools",
+    srcs: ["src/**/*.java"],
+    resource_dirs: ["res"],
+    manifest: "AndroidManifest.xml",
+    sdk_version: "system_current",
+    // Privileged for android.permission.DUMP, which the bug report request needs
+    privileged: true,
+    privapp_allowlist: "privapp_allowlist_org.zeroroms.tools.xml",
+    system_ext_specific: true,
+}

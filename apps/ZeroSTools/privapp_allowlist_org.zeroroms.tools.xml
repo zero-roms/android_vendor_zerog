@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-License-Identifier: Apache-2.0
+-->
+<permissions>
+    <privapp-permissions package="org.zeroroms.tools">
+        <!-- BugreportManager.requestBugreport: start Android's interactive bug report -->
+        <permission name="android.permission.DUMP" />
+    </privapp-permissions>
+</permissions>

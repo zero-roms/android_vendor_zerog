@@ -47,6 +47,10 @@ PRODUCT_PACKAGE_OVERLAYS += vendor/zeros/overlay
 PRODUCT_PACKAGES += \
     ZeroSRemovedPackages
 
+# ZeroS's own system app: quick settings tiles (Bug report, Phase 3B)
+PRODUCT_PACKAGES += \
+    ZeroSTools
+
 # Third-party apps, built from source (prebuilt/apps/build-fossify.sh,
 # prebuilt/apps/build-notallyx.sh)
 PRODUCT_PACKAGES += \
