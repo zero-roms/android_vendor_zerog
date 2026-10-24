@@ -18,6 +18,16 @@ PRODUCT_SYSTEM_PROPERTIES += \
     ro.zeros.device=$(ZEROS_BUILD) \
     ro.zeros.display.version=ZeroS-$(ZEROS_SEMVER)
 
+# Update server for LineageOS's Updater (lineage.updater.uri, HTTPS only; see
+# build/tools/publish-ota.sh). During 3B-3C updates come from an unlisted
+# Cloud Storage bucket, so the address is supplied only in the build
+# environment (ZEROS_UPDATER_URI) and never committed. Without it the Updater
+# asks LineageOS's server, which offers nothing for an UNOFFICIAL build.
+ifneq ($(ZEROS_UPDATER_URI),)
+PRODUCT_SYSTEM_EXT_PROPERTIES += \
+    lineage.updater.uri=$(ZEROS_UPDATER_URI)
+endif
+
 # Settings > About phone shows ro.zeros.version in its own "ZeroS version" row
 # (ZeroS fork of Settings, from 0.5.0), above LineageOS's version, which again
 # shows the plain LineageOS base. 0.2.0-0.4.0 put "ZeroS-<version>" into

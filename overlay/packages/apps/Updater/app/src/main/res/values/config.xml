@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     ZeroS colours for the Updater's header card (black, white, red) in place
+     of LineageOS's teal, and the downloads link.
+
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <color name="brand_primary">#0B0B0B</color>
+    <color name="brand_pattern">#1F1F1F</color>
+    <color name="on_brand_surface">#F2F2F0</color>
+    <color name="brand_sheen">#E5322D</color>
+    <string name="menu_downloads_url" translatable="false">https://github.com/zero-roms</string>
+</resources>
