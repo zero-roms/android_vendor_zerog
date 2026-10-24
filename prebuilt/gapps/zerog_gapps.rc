@@ -1,0 +1,8 @@
+# ZeroG: replaces MindTheGapps' gapps.rc in the Google build (bug B10).
+# Keeps ro.com.google.gmsversion, copied from MindTheGapps' file at the pinned
+# commit (update it whenever the vendor/gapps pin moves). Leaves out
+# ro.opa.eligible_device: with it, Google's setup offers the Assistant step,
+# whose screen belongs to the Google app that ZeroG leaves out, and setup
+# stalls on a blank screen.
+on init
+    setprop ro.com.google.gmsversion 17_202606

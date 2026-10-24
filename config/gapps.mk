@@ -58,7 +58,7 @@ PRODUCT_PACKAGES += \
     allowed_apex_com.google.android.gmssystem.xml \
     default-permissions-google.xml \
     default-permissions-mtg.xml \
-    gapps.rc \
+    zerog_gapps.rc \
     gms_fsverity_cert.der \
     google-hiddenapi-package-allowlist.xml \
     google.xml \
@@ -75,3 +75,5 @@ PRODUCT_PACKAGES += \
 # talkback, GoogleFeedback, PrebuiltExchange3Google,
 # com.google.android.dialer.support, libjni_latinimegoogle (gesture typing
 # for the AOSP keyboard, which the Google build replaces with Gboard).
+# MindTheGapps' gapps.rc is replaced by prebuilt/gapps/zerog_gapps.rc, which
+# drops ro.opa.eligible_device (bug B10).
